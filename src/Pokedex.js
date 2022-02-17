@@ -11,6 +11,13 @@ function devide(a) {
   }
   return a;
 }
+function expSum(deck) {
+  let sum=0;
+  for(let i=0;i<deck.length;i++){
+    sum+=deck[i].exp;
+  }
+  return sum;
+}
 export default class Pokedex extends Component {
   render() {
     const pokecards = [
@@ -27,23 +34,36 @@ export default class Pokedex extends Component {
     let arr2 = arr1;
     let deck1 = arr1.slice(0, pokecards.length / 2);
     let deck2 = arr2.slice(pokecards.length / 2, pokecards.length);
-
+    let score1=expSum(deck1);
+    let score2=expSum(deck2);
+    let res;
+    score1>score2 ? res=true : res=false;
     return (
-      <div className="Pokedex">
-      <div>
-        <h1>Deck 1</h1>
-        <div className="Pokecard">
+      <div className="Home">
+        <h1>Deck 1 : {score1} {res? <a className="W">Winner</a>:<a className="L">Loser</a>}</h1>
+        <div className="Pokedex">
           {deck1.map((p) => (
-            <Pokecard name={p.name} src={p.id} type={p.type} exp={p.exp} />
+            <Pokecard
+              className="Pokecard"
+              name={p.name}
+              src={p.id}
+              type={p.type}
+              exp={p.exp}
+            />
           ))}
         </div>
-        <h1>Deck 2</h1>
-        <div className="Pokecard">
+        <h1>Deck 2 : {score2} {!res? <a className="W">Winner</a>:<a className="L">Loser</a>}</h1>
+        <div className="Pokedex">
           {deck2.map((p) => (
-            <Pokecard name={p.name} src={p.id} type={p.type} exp={p.exp} />
+            <Pokecard
+              className="Pokecard"
+              name={p.name}
+              src={p.id}
+              type={p.type}
+              exp={p.exp}
+            />
           ))}
         </div>
-      </div>
       </div>
     );
   }

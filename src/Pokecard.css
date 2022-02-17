@@ -1,7 +1,15 @@
-.card{
-width: 200px;
-height: 450px;
-border: 2px solid goldenrod;
-margin: 2px;
-background-color:gold ;
+.card {
+  width: 200px;
+  height: 450px;
+  border: 2px solid goldenrod;
+  margin: 2px;
+  background-color: gold;
+}
+.img {
+  height: 150px;
+  width: 150px;
+}
+.img:hover {
+  height: 200px;
+  width: 200px;
 }
